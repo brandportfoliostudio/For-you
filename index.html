@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Infinite Love & Sorry</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #fdf1f7, #d6f0f3, #fefce7);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #555;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #f08cae;
+      animation: pulse 1.5s infinite;
+      z-index: 2;
+      margin-bottom: 15px;
+      text-shadow: 0 0 8px rgba(240,140,174,0.6);
+    }
+
+    p {
+      font-size: 1.5rem;
+      max-width: 600px;
+      line-height: 1.5;
+      color: #666;
+      z-index: 2;
+      text-shadow: 0 0 6px rgba(102,102,102,0.3);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .love {
+      position: absolute;
+      font-weight: bold;
+      opacity: 0.7;
+      pointer-events: none;
+      white-space: nowrap;
+      text-shadow: 0 0 6px rgba(255,255,255,0.5), 0 0 12px rgba(255,192,203,0.4);
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>I'm Sorry</h1>
+    <p>I said "I hate you" in anger, and I deeply regret it.  
+       I didn't mean it, and I hate that I hurt you.  
+       Please forgive me. Here's my infinite love for you.</p>
+  </div>
+
+  <script>
+    const colors = ['#f9c5d1', '#fce4ec', '#d6eaf8', '#cdebf1', '#fddde6'];
+    const totalGalaxies = 30;
+    const loves = [];
+
+    // Create glowing orbiting "I LOVE YOU" elements
+    for (let i = 0; i < totalGalaxies; i++) {
+      const love = document.createElement('div');
+      love.className = 'love';
+      love.innerText = 'I LOVE YOU';
+      love.style.color = colors[Math.floor(Math.random() * colors.length)];
+      love.style.fontSize = 12 + Math.random() * 30 + 'px';
+      document.body.appendChild(love);
+
+      loves.push({
+        el: love,
+        angle: Math.random() * 360,
+        radius: 50 + Math.random() * 300,
+        speed: 0.2 + Math.random() * 0.5
+      });
+    }
+
+    function animate() {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+
+      loves.forEach(l => {
+        l.angle += l.speed;
+        const rad = l.angle * Math.PI / 180;
+        l.el.style.left = centerX + l.radius * Math.cos(rad) - l.el.offsetWidth/2 + 'px';
+        l.el.style.top = centerY + l.radius * Math.sin(rad) - l.el.offsetHeight/2 + 'px';
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
