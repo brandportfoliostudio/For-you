@@ -1,101 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Infinite Love & Sorry</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      overflow: hidden;
-      background: radial-gradient(circle at center, #fdf1f7, #d6f0f3, #fefce7);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #555;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<title>Infinite Multiverse of Love</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at center, #fdf1f7, #d6f0f3, #fefce7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #555;
+  }
 
-    h1 {
-      font-size: 3rem;
-      color: #f08cae;
-      animation: pulse 1.5s infinite;
-      z-index: 2;
-      margin-bottom: 15px;
-      text-shadow: 0 0 8px rgba(240,140,174,0.6);
-    }
+  h1 {
+    font-size: 3rem;
+    color: #f08cae;
+    animation: pulse 1.5s infinite;
+    z-index: 2;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(240,140,174,0.6);
+  }
 
-    p {
-      font-size: 1.5rem;
-      max-width: 600px;
-      line-height: 1.5;
-      color: #666;
-      z-index: 2;
-      text-shadow: 0 0 6px rgba(102,102,102,0.3);
-    }
+  p {
+    font-size: 1.5rem;
+    max-width: 600px;
+    line-height: 1.5;
+    color: #666;
+    z-index: 2;
+    text-shadow: 0 0 6px rgba(102,102,102,0.3);
+  }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
 
-    .love {
-      position: absolute;
-      font-weight: bold;
-      opacity: 0.7;
-      pointer-events: none;
-      white-space: nowrap;
-      text-shadow: 0 0 6px rgba(255,255,255,0.5), 0 0 12px rgba(255,192,203,0.4);
-    }
-  </style>
+  .universe {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 6px rgba(255,255,255,0.6);
+    pointer-events: none;
+    opacity: 0.85;
+  }
+
+  .universe span {
+    display: block;
+    animation: rotateText 10s linear infinite;
+  }
+
+  @keyframes rotateText {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Soft starry background */
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+</style>
 </head>
 <body>
-  <div>
-    <h1>I'm Sorry</h1>
-    <p>I said "I hate you" in anger, and I deeply regret it.  
-       I didn't mean it, and I hate that I hurt you.  
-       Please forgive me. Here's my infinite love for you.</p>
-  </div>
+<div>
+  <h1>I'm Sorry</h1>
+  <p>I said "I hate you" in that argument, and I deeply regret it.<br>
+  I didn't mean it, and I hate that I hurt you with such harsh words.<br>
+  Please forgive me🥺. Here's my infinite love for you.</p>
+</div>
 
-  <script>
-    const colors = ['#f9c5d1', '#fce4ec', '#d6eaf8', '#cdebf1', '#fddde6'];
-    const totalGalaxies = 30;
-    const loves = [];
+<script>
+  const colors = ['#f9c5d1', '#fce4ec', '#d6eaf8', '#cdebf1', '#fddde6'];
+  const universes = [];
+  const totalUniverses = 20;
 
-    // Create glowing orbiting "I LOVE YOU" elements
-    for (let i = 0; i < totalGalaxies; i++) {
-      const love = document.createElement('div');
-      love.className = 'love';
-      love.innerText = 'I LOVE YOU';
-      love.style.color = colors[Math.floor(Math.random() * colors.length)];
-      love.style.fontSize = 12 + Math.random() * 30 + 'px';
-      document.body.appendChild(love);
+  // Create pastel universes
+  for (let i = 0; i < totalUniverses; i++) {
+    const uni = document.createElement('div');
+    uni.className = 'universe';
+    uni.style.background = colors[Math.floor(Math.random() * colors.length)];
+    const size = 60 + Math.random() * 100;
+    uni.style.width = size + 'px';
+    uni.style.height = size + 'px';
 
-      loves.push({
-        el: love,
-        angle: Math.random() * 360,
-        radius: 50 + Math.random() * 300,
-        speed: 0.2 + Math.random() * 0.5
-      });
-    }
+    const text = document.createElement('span');
+    text.innerText = 'I LOVE YOU';
+    uni.appendChild(text);
 
-    function animate() {
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
+    document.body.appendChild(uni);
 
-      loves.forEach(l => {
-        l.angle += l.speed;
-        const rad = l.angle * Math.PI / 180;
-        l.el.style.left = centerX + l.radius * Math.cos(rad) - l.el.offsetWidth/2 + 'px';
-        l.el.style.top = centerY + l.radius * Math.sin(rad) - l.el.offsetHeight/2 + 'px';
-      });
+    universes.push({
+      el: uni,
+      angle: Math.random() * 360,
+      radiusX: 50 + Math.random() * (window.innerWidth/2 - 50),
+      radiusY: 50 + Math.random() * (window.innerHeight/2 - 50),
+      speed: 0.2 + Math.random() * 0.5,
+      rotationSpeed: 0.2 + Math.random() * 0.5,
+      centerX: window.innerWidth/2,
+      centerY: window.innerHeight/2
+    });
+  }
 
-      requestAnimationFrame(animate);
-    }
+  // Create starry background
+  const totalStars = 100;
+  for(let i=0;i<totalStars;i++){
+    const star = document.createElement('div');
+    star.className='star';
+    star.style.left = Math.random()*window.innerWidth+'px';
+    star.style.top = Math.random()*window.innerHeight+'px';
+    star.style.width = 1 + Math.random()*2 + 'px';
+    star.style.height = star.style.width;
+    document.body.appendChild(star);
+  }
 
-    animate();
-  </script>
+  function animate() {
+    universes.forEach(u => {
+      u.angle += u.speed;
+      const rad = u.angle * Math.PI / 180;
+      u.el.style.left = u.centerX + u.radiusX * Math.cos(rad) - u.el.offsetWidth/2 + 'px';
+      u.el.style.top = u.centerY + u.radiusY * Math.sin(rad) - u.el.offsetHeight/2 + 'px';
+      
+      // Rotate the text inside universe
+      const span = u.el.querySelector('span');
+      let currentRotation = parseFloat(span.style.transform.replace('rotate(','').replace('deg)','')) || 0;
+      currentRotation += u.rotationSpeed;
+      span.style.transform = `rotate(${currentRotation}deg)`;
+    });
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    universes.forEach(u => {
+      u.centerX = window.innerWidth / 2;
+      u.centerY = window.innerHeight / 2;
+    });
+  });
+</script>
 </body>
 </html>
